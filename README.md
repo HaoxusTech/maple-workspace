@@ -2,8 +2,9 @@
 
 This repository holds reusable work for one Maple deployment: scripts, skills,
 schedule definitions and their dependencies. Each principal works in a separate
-session worktree from this repository. Completed reusable work is merged to
-local `main`; an external remote is optional.
+session worktree from this repository. Selected reusable text resources are
+merged to `main` and pushed to the configured remote after session conclusion.
+Binary artifacts stay on the persistent volume, outside GitHub.
 
 The worker's operating guidance is in [AGENTS.md](AGENTS.md). Deployment-owned
 skills live under `.agents/skills/`; installed extensions remain separate,
