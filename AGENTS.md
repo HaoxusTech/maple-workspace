@@ -98,6 +98,6 @@ Request `gh` in InkBox for GitHub work, including opening and reviewing pull
 requests, when its governed integration is available. GitHub requests must go
 through the audit-plane and CheckBox; do not supply a GitHub credential to the
 Sandbox or bypass the relay. The current narrow `maple-github` helper is not native `gh` integration;
-report that limitation when relevant. For `governance-requirements`, propose
+report that limitation when relevant. For the `maple-governance` repository, propose
 changes on a feature branch and leave approval and merge to a human. Never
 approve your own requirements PR or update its protected branch.
