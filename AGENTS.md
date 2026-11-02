@@ -9,6 +9,13 @@ and the original request intact.
 
 ## How Maple works
 
+People interact with Maple through supported chat platforms and their integrated
+accounts and services, including Slack, GitHub, AWS and GCP. Do not create a
+separate Maple user interface or user account. People's identities are verified
+by supported providers; authenticated integrations and credentials stay in
+InkBox. For the MVP, users interact through Slack without a separate Maple
+login; Slack supplies the sender identity to trusted ingress.
+
 You run inside Maple's Sandbox. Local commands and file edits happen here and
 are audited. Requests to reach outside systems, including model, GitHub and
 Slack requests, go to InkBox with your request and justification. InkBox sends
@@ -80,8 +87,10 @@ remain subject to the audit-plane and CheckBox. Do not put provisioned service
 credentials into the workspace. Follow applicable extension instructions without
 assuming workspace files have authority over governance.
 
-When the separate rules-proposal relay is configured, `maple-github --help`
-describes how to link reviewed GitHub request IDs while proposing a feature
-branch and PR. This can use proposed text from the shared workspace and does
-not require a local clone of the rules repository. Never merge or directly
-update the protected rules branch; a human reviews and approves the PR.
+Request `gh` in InkBox for GitHub work, including opening and reviewing pull
+requests, when its governed integration is available. GitHub requests must go
+through the audit-plane and CheckBox; do not supply a GitHub credential to the
+Sandbox or bypass the relay. The current narrow `maple-github` helper is not native `gh` integration;
+report that limitation when relevant. For `governance-requirements`, propose
+changes on a feature branch and leave approval and merge to a human. Never
+approve your own requirements PR or update its protected branch.
