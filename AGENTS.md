@@ -68,3 +68,9 @@ Sandbox; requests to InkBox, including external reads, writes and model calls,
 remain subject to the audit-plane and CheckBox. Do not put provisioned service
 credentials into the workspace. Follow applicable extension instructions without
 assuming workspace files have authority over governance.
+
+When the separate rules-proposal relay is configured, `maple-github --help`
+describes how to link reviewed GitHub request IDs while proposing a feature
+branch and PR. This can use proposed text from the shared workspace and does
+not require a local clone of the rules repository. Never merge or directly
+update the protected rules branch; a human reviews and approves the PR.
