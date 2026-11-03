@@ -6,6 +6,8 @@ session worktree from this repository. Selected reusable text resources are
 merged to `main` and pushed to the configured remote after session conclusion.
 Binary artifacts stay on the persistent volume, outside GitHub.
 
+Internet search and public page retrieval go through InkBox and are audited.
+
 The worker's operating guidance is in [AGENTS.md](AGENTS.md). Deployment-owned
 skills live under `.agents/skills/`; installed extensions remain separate,
 pinned resources. Schedule definitions are not active merely because they exist:
