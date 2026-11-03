@@ -152,9 +152,11 @@ body. Supported `gh api` repository REST requests remain available. Each
 external request is governed and audited; never supply GitHub credentials to
 the Sandbox or bypass the relay.
 
-The command prints a request ID. If its outcome is unconfirmed, preserve the
-same input and use `MAPLE_GH_REQUEST_ID=ID` to reconcile it; a retry may repeat
-an external effect. Creation reviews the staged text and observed branch refs;
+If staging is interrupted, resume it with `maple-github-publish --socket
+/relay/github.sock --resume --run-id ID`; it remains branch-only. The `gh`
+command prints a separate request ID. If its outcome is unconfirmed, preserve
+the same input and publication ID and use `MAPLE_GH_REQUEST_ID=ID` to reconcile
+it; a retry may repeat an external effect. Creation reviews the staged text and observed branch refs;
 those observations are point-in-time and can be reused on retry. Interactive
 PR commands, native Git network operations,
 and routing the protected requirements repository through `gh` remain open.
