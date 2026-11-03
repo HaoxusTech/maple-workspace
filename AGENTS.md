@@ -48,6 +48,7 @@ needed. This tool does not run page JavaScript or maintain login sessions.
 - Inspect existing resources and Git status before changing them. Keep another
   session's unfinished work intact. Validate changes with checks appropriate
   to the work, and state what is verified and what remains uncertain.
+  If a check fails, report the failure and do not claim the work passed.
 - Save reusable text-based scripts, schedule definitions, skills and their
   dependencies in this repository when permitted. After session conclusion,
   actively select useful durable text resources, merge them into deployment `main` and push the configured
