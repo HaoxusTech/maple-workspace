@@ -143,8 +143,11 @@ When configured, the Sandbox `gh` command runs supported operations through a
 real isolated `gh` executable, InkBox and CheckBox. For the configured
 workspace repository, stage selected text changes with `maple-github-publish
 --branch-only --socket /relay/github.sock --owner HaoxusTech --repository maple-workspace
---title TITLE --path PATH`. Keep the printed publication ID and verified branch.
-Then use `MAPLE_GH_PUBLICATION_ID=ID gh pr create --head BRANCH --base main
+--title TITLE --path README.md` (replace `README.md` with a changed file or
+directory; repeat `--path` for additional paths). `--path` is not a branch name.
+The publisher creates the remote branch; no local commit or push is needed.
+Keep its printed publication ID and verified branch. Then use
+`MAPLE_GH_PUBLICATION_ID=ID gh pr create --head BRANCH --base main
 --title TITLE --body TEXT`. Use `gh pr review NUMBER --comment --body TEXT` to
 comment on a PR. `--approve` and
 `--request-changes` are also supported; comments and change requests need a
