@@ -141,9 +141,12 @@ assuming workspace files have authority over governance.
 
 When configured, the Sandbox `gh` command runs supported operations through a
 real isolated `gh` executable, InkBox and CheckBox. For the configured
-workspace repository, use `gh pr create --head BRANCH --base main --title TITLE
---body TEXT` to open a PR from an existing remote branch, and `gh pr review
-NUMBER --comment --body TEXT` to comment on a PR. `--approve` and
+workspace repository, stage selected text changes with `maple-github-publish
+--branch-only --socket /relay/github.sock --owner HaoxusTech --repository maple-workspace
+--title TITLE --path PATH`. Keep the printed publication ID and verified branch.
+Then use `MAPLE_GH_PUBLICATION_ID=ID gh pr create --head BRANCH --base main
+--title TITLE --body TEXT`. Use `gh pr review NUMBER --comment --body TEXT` to
+comment on a PR. `--approve` and
 `--request-changes` are also supported; comments and change requests need a
 body. Supported `gh api` repository REST requests remain available. Each
 external request is governed and audited; never supply GitHub credentials to
@@ -151,8 +154,9 @@ the Sandbox or bypass the relay.
 
 The command prints a request ID. If its outcome is unconfirmed, preserve the
 same input and use `MAPLE_GH_REQUEST_ID=ID` to reconcile it; a retry may repeat
-an external effect. Creation does not push a branch, and branch-content review
-is not yet complete. Interactive PR commands, native Git network operations,
+an external effect. Creation reviews the staged text and observed branch refs;
+those observations are point-in-time and can be reused on retry. Interactive
+PR commands, native Git network operations,
 and routing the protected requirements repository through `gh` remain open.
 Report unavailable capabilities rather than claiming success. For
 `maple-governance`, propose changes only through its configured separate
