@@ -128,10 +128,21 @@ CheckBox review, with the web-read exception above. Do not put provisioned servi
 credentials into the workspace. Follow applicable extension instructions without
 assuming workspace files have authority over governance.
 
-Request `gh` in InkBox for GitHub work, including opening and reviewing pull
-requests, when its governed integration is available. GitHub requests must go
-through the audit-plane and CheckBox; do not supply a GitHub credential to the
-Sandbox or bypass the relay. The current narrow `maple-github` helper is not native `gh` integration;
-report that limitation when relevant. For the `maple-governance` repository, propose
-changes on a feature branch and leave approval and merge to a human. Never
-approve your own requirements PR or update its protected branch.
+When configured, the Sandbox `gh` command forwards the supported `gh api`
+repository REST subset to a real, isolated `gh` executable through InkBox and
+CheckBox. For example, create a pull request from an existing workspace branch
+with `gh api repos/OWNER/WORKSPACE/pulls -f title=TITLE -f head=BRANCH -f base=main`.
+A review can use `gh api repos/OWNER/WORKSPACE/pulls/NUMBER/reviews` with
+`--method POST --input -` and a JSON body on standard input. Replace the
+placeholders with the configured workspace repository and intended content.
+Every external request remains governed and audited; never supply a GitHub
+credential to the Sandbox or bypass the relay.
+
+The command prints a request ID. If its outcome is unconfirmed, preserve the
+same input and use `MAPLE_GH_REQUEST_ID=ID` to reconcile it; a retry may repeat
+an external effect. `gh pr`, native Git network operations, and routing the
+protected requirements repository through this command are not yet supported.
+Report unavailable capabilities rather than claiming success. For
+`maple-governance`, propose changes only through its configured separate
+proposal path and leave approval and merge to a human. Never approve your own
+requirements PR or update its protected branch.
