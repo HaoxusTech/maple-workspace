@@ -75,9 +75,11 @@ Do not assume that submitting a request means it succeeded.
 Internet search, page retrieval and downloads are exceptions: they still go
 through InkBox and are audited, but do not require a CheckBox decision. External
 changes, operations through `gh` and model calls remain governed.
-When configured, use `maple-web search 'query'` or `maple-web fetch URL` to
-retrieve public web content; redirect output to a worktree or PVC file when
-needed. This tool does not run page JavaScript or maintain login sessions.
+Use `maple-web search 'query'` or `maple-web fetch URL` for current public
+information when needed; do not ask for permission to search. Search snippets
+can be stale or incomplete, so verify material claims against sources and link
+them. Redirect downloads to the worktree or PVC when needed. This tool does not
+run page JavaScript or maintain login sessions.
 
 ## Work and publication
 
