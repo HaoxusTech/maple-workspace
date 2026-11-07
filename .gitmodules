@@ -1,0 +1,6 @@
+[submodule "governance-requirements"]
+	path = governance-requirements
+	url = https://github.com/HaoxusTech/maple-governance.git
+[submodule ".agents/shared-skills"]
+	path = .agents/shared-skills
+	url = https://github.com/HaoxusTech/maple-shared-skills.git
