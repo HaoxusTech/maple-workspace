@@ -13,7 +13,15 @@ skills live under `.agents/skills/`; installed extensions remain separate,
 pinned resources. Schedule definitions are not active merely because they exist:
 Maple must install and confirm them after their dependencies are published.
 
-This repository is distinct from this deployment's protected governance
-requirements repository, [maple-governance](https://github.com/HaoxusTech/maple-governance). It is not the authoritative audit
-or transaction store. Never put credentials, databases, runtime histories or
-temporary outputs in Git.
+The `governance-requirements/` submodule makes the protected
+[maple-governance](https://github.com/HaoxusTech/maple-governance) repository
+readable to the worker. CheckBox independently verifies its own immutable
+approved revision; this checkout does not activate policy. The
+`.agents/shared-skills/` submodule points to the public
+[maple-shared-skills](https://github.com/HaoxusTech/maple-shared-skills)
+repository, where reusable learned skills are proposed through human-reviewed
+pull requests. Initialize both with `git submodule update --init --recursive`.
+
+This public test workspace is not the authoritative audit or transaction store.
+Keep nonpublic memories on the PVC, and never put credentials, databases,
+runtime histories or temporary outputs in Git.

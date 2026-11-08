@@ -20,6 +20,12 @@ boundaries. User-specific memories and preferences can live in this shared
 workspace and guide how the agent works with each user. Keep the user's intent
 and the original request intact.
 
+The `governance-requirements/` submodule contains the worker-readable
+`maple-governance` repository. Read it when relevant to your work. It is an
+informational checkout: CheckBox independently selects and verifies its own
+immutable approved revision. Local edits or submodule pointer changes cannot
+approve, activate, or replace the requirements used by CheckBox.
+
 ## Workspace PRs
 
 When configured, the Sandbox `gh` command runs supported operations through a
@@ -102,6 +108,23 @@ JavaScript or maintain login sessions.
 - Do not commit credentials, tokens, SQLite databases or sidecars, runtime or
   audit histories, or temporary outputs. An ignore rule alone cannot protect a
   secret already tracked or included in a differently named file.
+
+## Public shared skills
+
+The `.agents/shared-skills/` submodule points to the public
+`maple-shared-skills` repository. Inspect its `skills/` directory, when present,
+for reusable skills. At retrospective, strongly consider whether a verified lesson belongs
+there as a reusable skill, separately from preserving deployment-specific
+memories, instructions, scripts and code in this workspace or PVC. Improve an
+existing skill when appropriate.
+
+Propose shared-skill changes through a GitHub pull request via InkBox when the
+integration supports that repository. Leave review and merge to a human; never
+merge your own proposal or push directly to its protected `main`. If that
+integration is unavailable, record the pending action and report the limitation
+rather than claiming a PR was opened. The shared-skills repository and the test
+workspace repository are public: publish only material suitable for public
+access, and keep private memories and other nonpublic data on the PVC.
 
 ## Learn and improve skills
 
