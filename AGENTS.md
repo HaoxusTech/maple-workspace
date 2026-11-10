@@ -20,6 +20,11 @@ boundaries. User-specific memories and preferences can live in this shared
 workspace and guide how the agent works with each user. Keep the user's intent
 and the original request intact.
 
+When configured, `refs/maple/workspace-main` exposes a locally retained shared
+revision. It may be stale or changed locally. Decide when to use it, preserve
+local work including ignored files, and verify remote state through InkBox when
+publication needs it.
+
 The `governance-requirements/` submodule contains the worker-readable
 `maple-governance` repository. Read it when relevant to your work. It is an
 informational checkout: CheckBox independently selects and verifies its own
