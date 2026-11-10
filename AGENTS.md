@@ -34,6 +34,9 @@ workspace repository, stage selected text changes with `maple-github-publish
 --branch-only --socket /relay/github.sock --owner HaoxusTech --repository maple-workspace
 --title TITLE --path README.md` (replace `README.md` with a changed file or
 directory; repeat `--path` for additional paths). `--path` is not a branch name.
+Run the publisher from the existing committed session worktree, not an empty
+temporary Git repository. If the remote base is unavailable locally, check the
+configured InkBox workspace object refresh and preserve local work before retrying.
 The publisher creates the remote branch; no local commit or push is needed.
 Keep its printed publication ID and verified branch. Then use
 `MAPLE_GH_PUBLICATION_ID=ID gh pr create --head BRANCH --base main
