@@ -25,3 +25,5 @@ pull requests. Initialize both with `git submodule update --init --recursive`.
 This public test workspace is not the authoritative audit or transaction store.
 Keep nonpublic memories on the PVC, and never put credentials, databases,
 runtime histories or temporary outputs in Git.
+
+See the [GitHub connector guide](docs/github-connector.md) for reading workspace repository metadata through the governed relay.
