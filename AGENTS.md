@@ -110,8 +110,9 @@ Use `maple-web search 'query'` to find current public information, then use
 `maple-web read URL` to read source pages as text; do not ask for permission to
 search. Search snippets can be stale or incomplete, so verify material claims
 against sources and link them. Use `maple-web fetch URL` for raw downloads and
-save them to the worktree or PVC when needed. These commands do not run page
-JavaScript or maintain login sessions.
+save them to the worktree or PVC when needed. For a text-based PDF, after a
+successful fetch use `pdftotext FILE -` when available. These commands do not
+run page JavaScript or maintain login sessions.
 
 ## Work and publication
 
