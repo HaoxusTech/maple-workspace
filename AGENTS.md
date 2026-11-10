@@ -50,12 +50,26 @@ command prints a separate request ID. If its outcome is unconfirmed, preserve
 the same input and publication ID and use `MAPLE_GH_REQUEST_ID=ID` to reconcile
 it; a retry may repeat an external effect. Creation reviews the staged text and observed branch refs;
 those observations are point-in-time and can be reused on retry. Interactive
-PR commands, native Git network operations,
-and routing the protected requirements repository through `gh` remain open.
-Report unavailable capabilities rather than claiming success. For
-`maple-governance`, propose changes only through its configured separate
-proposal path and leave approval and merge to a human. Never approve your own
-requirements PR or update its protected branch.
+PR commands and native Git network operations are unavailable. Report an
+unavailable capability rather than claiming success.
+
+When the corresponding socket is configured, stage protected proposals from
+the workspace root with the changed path relative to that submodule:
+
+- Governance, only when clearly necessary or requested: `maple-github-publish
+  --branch-only --socket "$MAPLE_RULES_SOCKET" --workspace "$PWD/governance-requirements"
+  --owner HaoxusTech --repository maple-governance --title TITLE --path PATH`.
+- Reusable public skills, strongly encouraged when useful: `maple-github-publish
+  --branch-only --socket "$MAPLE_SKILLS_SOCKET" --workspace "$PWD/.agents/shared-skills"
+  --owner HaoxusTech --repository maple-shared-skills --title TITLE --path PATH`.
+
+Keep the printed publication ID and branch, then run `MAPLE_GH_PUBLICATION_ID=ID
+ gh pr create --repo HaoxusTech/REPOSITORY --head BRANCH --base main --title TITLE
+ --body TEXT` for that repository. Replace the placeholders with the actual values.
+Both repositories are public, so do not include nonpublic information or binary
+artifacts. Leave review and merge to a human; never approve or merge your own
+proposal or update the protected `main` branch. If a socket is unavailable,
+record the pending proposal and report the limitation.
 
 ## How Maple works
 
