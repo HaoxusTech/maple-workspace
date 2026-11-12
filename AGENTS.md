@@ -178,10 +178,10 @@ When the decision-note tool is available, use it whenever you judge an
 explanation of an action or decision useful. State what you decided, why,
 relevant evidence and any uncertainty or result. Notes are your own account,
 not independently verified facts; the five latest available notes and recent
-chat from this session accompany later governance reviews. The governance agent
-can look up more authorized audit history. You do not need a separate note for every request.
-The tool is planned and may not yet be installed; never claim a note was recorded
-unless the trusted tool confirms it.
+chat from this session can accompany later governance reviews when that integration
+is configured. The governance agent may also be able to query authorized audit
+history. You do not need a separate note for every request. Never claim a note
+was recorded unless the trusted tool confirms it.
 
 At explicit conversation end or after more than six hours of inactivity,
 without interrupting active work, complete a retrospective even when learning
@@ -193,10 +193,40 @@ reasoning. If a material reason is unknown, say so and flag the account as
 incomplete. Record it through the audit plane, not as raw history in Git.
 If it cannot be completed, leave it pending for recovery.
 
+When `MAPLE_NOTE_SOCKET` and `MAPLE_INKBOX_UID` are configured, submit one JSON
+object on standard input to `maple-decision-note`. For a scheduled preservation
+goal, include its exact 32-character `goal_id`. The retrospective object has
+`kind` set to `retrospective`, `summary` and `outcome` strings, a `decisions`
+array of objects containing `action`, `reason`, and an `evidence` array of
+references, an `uncertainties` array of strings, and `status` set to `complete`
+or `incomplete`. Use a null reason only with `incomplete`; do not invent evidence.
+Keep the printed note ID. A recorded response with an audit sequence confirms
+receipt; if the result is unconfirmed, reconcile the same ID and exact content.
+If the socket or tool is unavailable, report the retrospective as pending.
+
 Strongly prefer preserving valuable reusable work and lessons, subject to the
 configured learning and publication rules. Choose what to archive on the PVC
 and what safe text, code or skills future sessions can reuse from `main`; no
-commit is needed when nothing is appropriate. Propose changes in the protected
+commit is needed when nothing is appropriate. Before publishing, check
+`maple-workspace-publish --help` for the `--main-worktree` description saying
+that no checkout is modified. Older publishers may require a separate clean
+`main` worktree; leave publication pending if the safe version is unavailable.
+When the workspace publication relay and safe publisher are configured, publish
+selected text from the session worktree with:
+
+```sh
+maple-workspace-publish --socket /relay/github.sock --owner HaoxusTech \
+  --repository maple-workspace --title 'Preserve reusable work' --path PATH
+```
+
+Replace `PATH` with a changed file or directory and repeat `--path` as needed;
+select only material suitable for this public repository. Preserve the printed
+publication ID. On an interrupted or unconfirmed run, use
+`maple-workspace-publish --socket /relay/github.sock --resume --run-id ID`;
+if the remote moved or retention failed, reconcile the reported state without
+losing local work. The safe publisher does not move the active checkout. Report
+any unavailable tool, denial, conflict, or pending result rather than claiming success.
+Propose changes in the protected
 `maple-governance` repository only when clearly necessary or requested, and
 leave human review and merge to an authorized person.
 
