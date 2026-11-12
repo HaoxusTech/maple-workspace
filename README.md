@@ -20,7 +20,8 @@ approved revision; this checkout does not activate policy. The
 `.agents/shared-skills/` submodule points to the public
 [maple-shared-skills](https://github.com/HaoxusTech/maple-shared-skills)
 repository, where reusable learned skills are proposed through human-reviewed
-pull requests. Initialize both with `git submodule update --init --recursive`.
+pull requests. Initialize them through the configured InkBox routes as described
+in [Maple operations](docs/maple-operations.md).
 
 This public test workspace is not the authoritative audit or transaction store.
 Keep nonpublic memories on the PVC, and never put credentials, databases,
