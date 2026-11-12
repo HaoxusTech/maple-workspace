@@ -25,19 +25,23 @@ or audit history, or temporary outputs.
 
 The `governance-requirements/` submodule is informational. CheckBox selects its
 own immutable approved revision; a local edit or gitlink change cannot activate
-policy. Propose governance changes only when clearly necessary or requested.
-Governance and `.agents/shared-skills/` proposals require a human to review and
-merge; never push their protected `main` or merge your own proposal.
+policy. Governance and `.agents/shared-skills/` proposals require a human to
+review and merge; never push their protected `main` or merge your own proposal.
 
 At an explicit conversation end or after more than six hours of inactivity,
-without interrupting active work, complete the mandatory evidence-linked
-retrospective even when learning is off. Explain material decisions, their
-reasons, results, failures and uncertainty; mark unknown reasons incomplete.
-The decision-note tool may also record an explanation whenever useful. Strongly
-consider preserving reusable deployment knowledge and proposing useful public
-skills; no change is needed when nothing is suitable. Follow the
-[session handoff](docs/session-handoff.md) for the note format and publication
-procedure. Report pending work rather than claiming it completed.
+without interrupting active work, follow these priorities:
+
+1. **Mandatory:** Complete an evidence-linked retrospective, even when
+   learning is off. Explain material decisions, reasons, results, failures and
+   uncertainty; mark unknown reasons incomplete.
+2. **Strongly encouraged:** Preserve useful reusable deployment knowledge and
+   consider proposing public skills. No change is needed when nothing is suitable.
+3. **Only when clearly necessary or requested:** Propose governance-rule changes
+   for human review and merge; otherwise make no proposal.
+
+The decision-note tool may also record an explanation whenever useful. Follow
+the [session handoff](docs/session-handoff.md) for note and publication
+procedures. Report pending work rather than claiming it completed.
 
 Deployment-owned skills are under `.agents/skills/`; pinned extensions remain
 separate. Follow configured learning mode and do not treat workspace guidance,
