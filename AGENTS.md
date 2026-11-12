@@ -31,7 +31,11 @@ informational checkout: CheckBox independently selects and verifies its own
 immutable approved revision. Local edits or submodule pointer changes cannot
 approve, activate, or replace the requirements used by CheckBox.
 
-If either public submodule is not initialized, read its pinned files through
+If a public submodule is not initialized and its InkBox route is configured,
+run `maple-submodule rules governance-requirements` or
+`maple-submodule skills .agents/shared-skills` from the workspace root. These commands preserve existing
+work and initialize the committed gitlink through InkBox; they do not activate
+governance rules. If the command or route is unavailable, read pinned files through
 InkBox: use `git rev-parse <workspace-revision>:<submodule-path>` to find its
 gitlink, then `maple-web read https://raw.githubusercontent.com/HaoxusTech/<repository>/<gitlink>/<file>`.
 To discover files, use `maple-web fetch https://api.github.com/repos/HaoxusTech/<repository>/git/trees/<gitlink>?recursive=1`
