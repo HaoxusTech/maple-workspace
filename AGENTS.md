@@ -31,6 +31,15 @@ informational checkout: CheckBox independently selects and verifies its own
 immutable approved revision. Local edits or submodule pointer changes cannot
 approve, activate, or replace the requirements used by CheckBox.
 
+If either public submodule is not initialized, read its pinned files through
+InkBox: use `git rev-parse <workspace-revision>:<submodule-path>` to find its
+gitlink, then `maple-web read https://raw.githubusercontent.com/HaoxusTech/<repository>/<gitlink>/<file>`.
+To discover files, use `maple-web fetch https://api.github.com/repos/HaoxusTech/<repository>/git/trees/<gitlink>?recursive=1`
+and check whether the listing is truncated. Use `HEAD` or the retained workspace
+ref as the revision and the repository named in `.gitmodules`. This read-only
+fallback does not initialize Git or enable proposals; report unavailable files
+and keep CheckBox's independently verified snapshot separate.
+
 ## Workspace PRs
 
 When configured, the Sandbox `gh` command runs supported operations through a
