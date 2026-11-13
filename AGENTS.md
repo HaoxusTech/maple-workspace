@@ -49,12 +49,13 @@ the [session handoff](docs/session-handoff.md) for note and publication
 procedures. Report pending work rather than claiming it completed.
 
 Maple's skill design provides arrays of shareable and private skill repositories
-as workspace submodules, with symlinks in `.agents/skills/` to their skills.
-The current deployment has one configured shared-skills proposal route; multiple
-repositories and automatic link setup are not yet available. For an initialized
-source, use the symlink procedure in [Maple operations](docs/maple-operations.md)
-to expose its skills to Codex. Report missing or uninitialized sources and name
-collisions instead of assuming they are usable. Pinned extensions remain separate.
+as workspace submodules, with symlinks in `.agents/skills/` to their contents.
+The tracked `shared-skills` link exposes skills in that repository once its
+submodule is initialized. The current deployment has one shared-skills proposal
+route; additional repository routes are not yet available. See
+[Maple operations](docs/maple-operations.md) for other sources. Report missing
+or uninitialized sources and name collisions instead of assuming they are usable.
+Pinned extensions remain separate.
 
 You may propose changes to any skill repository only through a PR. Each proposal
 must be reviewed by CheckBox against the governance requirements. Public skill
