@@ -70,6 +70,20 @@ reconcile the same request. A retry may repeat an external effect. Supported
 `gh pr review` and repository REST operations also use the relay; interactive
 PR commands and native Git network operations are unavailable.
 
+## Workspace issues
+
+Create an issue in the configured workspace repository through InkBox:
+
+```sh
+gh api --method POST repos/HaoxusTech/maple-workspace/issues \
+  -f 'title=TITLE' -f 'body=BODY'
+```
+
+Read `html_url` from the returned JSON. The current relay supports `--jq` only
+on GET requests; do not add it to a POST. If the outcome is unconfirmed, check
+the repository for an existing issue before retrying: a retry can repeat an
+external effect.
+
 ## Protected proposals
 
 From the workspace root, select a changed path relative to the submodule:
