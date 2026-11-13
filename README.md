@@ -1,5 +1,10 @@
 # Maple deployment workspace
 
+The first MVP is a working Slack-to-Codex agent with persistent per-user sessions
+and web/GitHub access through InkBox. An embedded terminal, reaction polish and
+live-progress polish are enhancements, not MVP gates. An unsent terminal draft
+may be lost on restart or disconnect; active work must not be interrupted.
+
 This repository holds reusable work for one Maple deployment: scripts, skills,
 schedule definitions and their dependencies. Each principal works in a separate
 session worktree from this repository. Selected reusable text resources are

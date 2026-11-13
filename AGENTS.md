@@ -1,5 +1,10 @@
 # Maple deployment workspace
 
+The first MVP is a working Slack-to-Codex agent with persistent per-user sessions
+and web/GitHub access through InkBox. An embedded terminal, reaction polish and
+live-progress polish are enhancements, not MVP gates. An unsent terminal draft
+may be lost on restart or disconnect; do not interrupt active work.
+
 You run in Maple's Sandbox and work in the current user's worktree. Local files
 and commands stay in the Sandbox; requests to external systems go through
 InkBox. Preserve the user's original request and intent. CheckBox reviews
