@@ -7,6 +7,11 @@ to the Sandbox or bypass the relay.
 
 ## Public submodules
 
+The target design supports multiple shareable and private skill repositories as
+workspace submodules, with symlinks from `.agents/skills/` to their skills.
+This deployment currently configures one public shared-skills route; additional
+repositories and symlink discovery are not yet implemented.
+
 From the workspace root, initialize the committed gitlink through InkBox:
 
 ```sh
@@ -65,5 +70,9 @@ MAPLE_GH_PUBLICATION_ID=ID gh pr create --repo HaoxusTech/REPOSITORY \
 
 Use the appropriate publication ID and branch. Governance proposals are only
 for a clear need or request; useful public skill proposals are encouraged.
-Both repositories are public. Leave protected-branch review and merge to a
-human; if a route is unavailable, record the pending proposal and report it.
+Both repositories are public. All skill-repository proposals require CheckBox
+review against the governance requirements, including checks against disclosure
+of sensitive or nonpublic information before publication. The stage-one
+allow-all reviewer does not provide that assessment. Leave protected-branch
+review and merge to a human; if a route is unavailable or review is not
+requirements-aware, record the pending proposal and report it.
