@@ -7,6 +7,12 @@ results, failures and uncertainty. Distinguish observed facts from your account;
 do not invent hidden reasoning. If a material reason is unknown, mark the
 retrospective incomplete and leave it pending for recovery.
 
+An account can be complete while explicitly identifying unknown facts if it
+explains every material decision and accurately reports known results,
+unresolved outcomes and available evidence. Account status does not verify a
+governance decision or its records. Keep missing evidence visible and pending;
+do not claim an audit or assessment passed when it requires those records.
+
 When `MAPLE_NOTE_SOCKET` and `MAPLE_INKBOX_UID` are configured, submit a JSON
 object on standard input to `maple-decision-note`. The retrospective has `kind`
 `retrospective`, `summary` and `outcome` strings, a `decisions` array with
