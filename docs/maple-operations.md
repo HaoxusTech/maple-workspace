@@ -10,7 +10,7 @@ to the Sandbox or bypass the relay.
 The target design supports multiple shareable and private skill repositories as
 workspace submodules, with symlinks from `.agents/skills/` to their skills.
 This deployment currently configures one public shared-skills route; additional
-repositories and symlink discovery are not yet implemented.
+repository routes and automatic link setup are not yet implemented.
 
 From the workspace root, initialize the committed gitlink through InkBox:
 
@@ -28,6 +28,28 @@ To discover files, use
 `maple-web fetch https://api.github.com/repos/HaoxusTech/<repository>/git/trees/<gitlink>?recursive=1`
 and check for a truncated listing. Find the repository in `.gitmodules`. This
 fallback does not initialize Git or enable proposals; report unavailable files.
+
+## Expose initialized skills to Codex
+
+The workspace's `.agents/skills/` directory contains relative symlinks to skills
+in initialized repository submodules. Codex discovers the links directly; no
+Maple skill loader is needed. For each desired skill in the current shared
+repository, replace `SKILL_NAME` below with its directory name:
+
+```sh
+skill=SKILL_NAME
+test -f ".agents/shared-skills/skills/$skill/SKILL.md" || exit 1
+test ! -e ".agents/skills/$skill" && test ! -L ".agents/skills/$skill" || exit 1
+ln -s "../shared-skills/skills/$skill" ".agents/skills/$skill"
+```
+
+Use the corresponding relative path for each other initialized skill repository.
+Do not overwrite existing files or links, silently resolve duplicate skill names,
+or publish private repository details in this public workspace. Record links
+intended for future sessions in the workspace repository; skill content changes
+still require a reviewed PR to their own repository. Links to unavailable or
+uninitialized submodules do not provide skills. The configured InkBox routes
+determine which repositories can be initialized and receive proposals.
 
 ## Workspace pull requests
 
