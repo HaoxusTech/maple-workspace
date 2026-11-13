@@ -42,5 +42,17 @@ Repeat `--path` as needed. Preserve the printed publication ID; on an
 interrupted or unconfirmed run use `maple-workspace-publish --socket
 /relay/github.sock --resume --run-id ID`. Reconcile a moved remote or failed
 retention without losing local work. Report denials, conflicts and pending
-results instead of claiming publication. Follow [Maple operations](maple-operations.md)
-for protected proposals, which require human review and merge.
+results instead of claiming publication.
+
+The publisher retains the confirmed revision but does not update this checkout.
+At a safe point, decide whether to integrate that verified revision into your
+own worktree. Check ancestry and preserve tracked, untracked and ignored work;
+use `git merge --ff-only --no-overwrite-ignore` for a safe fast-forward. A newly
+published untracked file can block it even when the contents match. Compare the
+file and its type with the exact published revision first. If they match,
+preserve that exact path in a named stash before integrating; do not stash
+unrelated paths. If they differ, or the revision, worktree or result is
+uncertain, leave the work intact and report the pending reconciliation.
+
+Follow [Maple operations](maple-operations.md) for protected proposals, which
+require human review and merge.
