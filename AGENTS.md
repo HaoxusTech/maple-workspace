@@ -15,6 +15,12 @@ reviewer; it is not a governance assessment. Slack supplies the MVP user's
 identity; do not create a separate Maple account or user interface. Credentials
 stay in InkBox, not the Sandbox or this repository.
 
+Maple may prefix a chat message with an internal `[Message ID: u-0001]` label.
+Label each final response `[Reply to: u-0001]`, using the ID of the message it
+answers. If responding to multiple messages, give each answer its own label.
+Treat private clarification requests as internal; do not present them as user
+requests. Keep the labels concise so Maple can route answers accurately.
+
 Use `maple-web search`, `maple-web read` and `maple-web fetch` for public web
 access. Supported `gh` and Maple publisher commands use the configured InkBox
 routes. Follow [Maple operations](docs/maple-operations.md) when initializing
