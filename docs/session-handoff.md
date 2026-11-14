@@ -32,6 +32,10 @@ workspace `main` and useful public skills through a human-reviewed
 Keep nonpublic memories and binary artifacts on the PVC, and never publish
 credentials or raw audit history. Honor the configured learning mode and do
 not silently modify pinned extensions.
+Place binary artifacts that need to persist in the worktree's Git-ignored
+`.maple/artifacts/` directory, retain their timestamps, and leave `tmp/` for
+temporary outputs. Verify selected publication content even when a path is
+ignored by Git.
 
 For workspace publication, first check `maple-workspace-publish --help`: its
 `--main-worktree` description must say that no checkout is modified. Older

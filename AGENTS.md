@@ -33,6 +33,10 @@ revision when configured. This test workspace and its shared-skills repository
 are public: publish only suitable text, code and skills. Keep binary artifacts
 and nonpublic memories on the PVC; never commit credentials, databases, runtime
 or audit history, or temporary outputs.
+For persistent binary artifacts, use `.maple/artifacts/` in the current
+worktree. It is Git-ignored and stays on the workspace volume; retain file
+timestamps for the deployment's retention policy. Use `tmp/` for temporary
+outputs. Git ignore is not a substitute for checking what a publication sends.
 
 The `governance-requirements/` submodule is informational. CheckBox selects its
 own immutable approved revision; a local edit or gitlink change cannot activate

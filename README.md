@@ -10,6 +10,10 @@ schedule definitions and their dependencies. Each principal works in a separate
 session worktree from this repository. Selected reusable text resources are
 merged to `main` and pushed to the configured remote after session conclusion.
 Binary artifacts stay on the persistent volume, outside GitHub.
+The Git-ignored `.maple/artifacts/` directory in each worktree is available for
+binary artifacts that need to survive the session; `tmp/` is for temporary
+outputs. These files are not shared through Git and remain subject to the
+deployment's retention policy.
 
 Internet search and public page retrieval go through InkBox and are audited.
 
