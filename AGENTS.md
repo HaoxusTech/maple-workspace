@@ -49,8 +49,11 @@ without interrupting active work, follow these priorities:
 1. **Mandatory:** Complete an evidence-linked retrospective, even when
    learning is off. Explain material decisions, reasons, results, failures and
    uncertainty; mark unknown reasons incomplete.
-2. **Strongly encouraged:** Preserve useful reusable deployment knowledge and
-   consider proposing public skills. No change is needed when nothing is suitable.
+2. **Strongly encouraged:** Preserve useful reusable deployment workspace
+   knowledge and separately review reusable learned skills for suitability in
+   `maple-shared-skills`. Propose safe, useful additions or improvements only
+   through PRs for human review and merge, within existing governance and privacy
+   boundaries. Make no skill proposal when nothing safe and useful is appropriate.
 3. **Only when clearly necessary or requested:** Propose governance-rule changes
    for human review and merge; otherwise make no proposal.
 

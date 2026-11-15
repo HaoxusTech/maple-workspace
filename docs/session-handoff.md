@@ -26,9 +26,12 @@ retrospective. Notes are the agent's account, not independently verified facts.
 The latest five available same-session notes and recent chat may accompany
 governance reviews when configured; authorized audit lookup may provide more.
 
-Strongly consider preserving useful deployment-specific text and lessons in
-workspace `main` and useful public skills through a human-reviewed
-`maple-shared-skills` PR. No change is needed when nothing is appropriate.
+Strongly encourage both preserving useful deployment-specific knowledge in
+workspace `main` and a separate review of reusable learned skills for suitability
+in `maple-shared-skills`. Propose safe, useful skill additions or improvements
+only through PRs for human review and merge, following the existing CheckBox,
+governance and privacy requirements. Make no skill proposal when nothing safe
+and useful is appropriate.
 Keep nonpublic memories and binary artifacts on the PVC, and never publish
 credentials or raw audit history. Honor the configured learning mode and do
 not silently modify pinned extensions.
