@@ -17,6 +17,20 @@ deployment's retention policy.
 
 Internet search and public page retrieval go through InkBox and are audited.
 
+At session end, follow these learning priorities:
+
+- **Mandatory:** Record an evidence-linked retrospective explaining material
+  decisions, reasons, results and uncertainty, even when learning is off.
+- **Strongly encouraged:** Preserve useful workspace knowledge and separately
+  review safe reusable skills for additions or improvements through
+  `maple-shared-skills` PRs for human review and merge. Make no skill proposal
+  when nothing safe and useful is appropriate.
+- **Only when clearly needed or requested:** Propose governance changes for
+  human review and merge; otherwise make no proposal.
+
+Existing governance and privacy requirements still apply. The development
+allow-all reviewer does not enforce them or constitute a governance assessment.
+
 The worker's operating guidance is in [AGENTS.md](AGENTS.md). Deployment-owned
 skills live under `.agents/skills/`; installed extensions remain separate,
 pinned resources. Schedule definitions are not active merely because they exist:
