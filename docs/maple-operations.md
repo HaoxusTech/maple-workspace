@@ -100,10 +100,11 @@ gh api --method POST repos/HaoxusTech/maple-workspace/issues \
   -f 'title=TITLE' -f 'body=BODY'
 ```
 
-Read `html_url` from the returned JSON. The current relay supports `--jq` only
-on GET requests; do not add it to a POST. If the outcome is unconfirmed, check
-the repository for an existing issue before retrying: a retry can repeat an
-external effect.
+Read `html_url` from the returned JSON, or add `--jq .html_url` to filter the
+response locally. If the command fails after GitHub returns HTTP success, the
+issue may already exist. Check the retained outcome and the repository before
+retrying. Preserve the printed request ID and original input; a retry can repeat
+an external effect when its outcome is unconfirmed.
 
 ## Protected proposals
 
