@@ -59,6 +59,10 @@ gh api repos/HaoxusTech/maple-workspace/git/ref/heads/main --jq .object.sha
 git rev-parse --verify refs/maple/workspace-main
 ```
 
+Where supported, the successful `gh api` read also requests an immediate
+governed refresh. It does not wait for that refresh to finish: recheck the ref
+and report a pending, denied or unavailable refresh rather than assuming success.
+
 The local ref may be stale or modified. If it does not match the verified
 remote revision, wait and recheck or report the refresh pending. At a safe
 point, follow [session handoff](session-handoff.md) to integrate the verified
