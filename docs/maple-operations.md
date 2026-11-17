@@ -48,6 +48,23 @@ determine which repositories can be initialized and receive proposals.
 
 ## Workspace pull requests
 
+When workspace-object refresh is enabled, InkBox periodically checks remote
+`main` and imports new Git objects into `refs/maple/workspace-main`; it does not
+change your checkout. The default interval after a successful check is five
+minutes, and failures can take longer. Compare the retained ref with a fresh
+governed GitHub observation:
+
+```sh
+gh api repos/HaoxusTech/maple-workspace/git/ref/heads/main --jq .object.sha
+git rev-parse --verify refs/maple/workspace-main
+```
+
+The local ref may be stale or modified. If it does not match the verified
+remote revision, wait and recheck or report the refresh pending. At a safe
+point, follow [session handoff](session-handoff.md) to integrate the verified
+revision without overwriting tracked, untracked or ignored work. If refresh is
+disabled or unavailable, preserve the worktree and report the limitation.
+
 Run the branch publisher from a committed Git worktree, not an empty temporary
 repository. Select changed files or directories with `--path`; it is not a branch
 name, and may be repeated:
