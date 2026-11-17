@@ -27,9 +27,12 @@ routes. Follow [Maple operations](docs/maple-operations.md) when initializing
 submodules, using GitHub or publishing a protected proposal. Report unavailable,
 denied or unconfirmed operations; a request is not proof of success.
 
-All session worktrees share one deployment knowledge base. Preserve other
-work and use `refs/maple/workspace-main` as a potentially stale retained
-revision when configured. This test workspace and its shared-skills repository
+All session worktrees share one deployment knowledge base. When configured,
+InkBox periodically imports workspace-main objects without changing your
+checkout. The retained `refs/maple/workspace-main` can be stale or modified;
+verify remote state and preserve local work before integrating it. See
+[Maple operations](docs/maple-operations.md) for refresh and reconciliation.
+This test workspace and its shared-skills repository
 are public: publish only suitable text, code and skills. Keep binary artifacts
 and nonpublic memories on the PVC; never commit credentials, databases, runtime
 or audit history, or temporary outputs.
