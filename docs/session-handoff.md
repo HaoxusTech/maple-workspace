@@ -26,6 +26,20 @@ retrospective. Notes are the agent's account, not independently verified facts.
 The latest five available same-session notes and recent chat may accompany
 governance reviews when configured; authorized audit lookup may provide more.
 
+When the conversation is actually concluded, record a separate end claim using
+the latest real user message's internal `[Message ID: u-0001]` label:
+
+```sh
+printf '%s\n' '{"kind":"session_end","last_message_id":"u-0001"}' | maple-decision-note
+```
+
+Replace `u-0001` with that message's exact ID. Do not invent an ID for terminal
+input or use an internal follow-up as the source. Keep IDs out of Slack. Retain
+the printed note ID and reconcile an unconfirmed submission with the same ID
+and exact content. An end claim does not itself schedule or complete the
+retrospective; carry out the mandatory wrap-up, and report unavailable or
+unconfirmed recording as pending.
+
 Strongly encourage both preserving useful deployment-specific knowledge in
 workspace `main` and a separate review of reusable learned skills for suitability
 in `maple-shared-skills`. Propose safe, useful skill additions or improvements
