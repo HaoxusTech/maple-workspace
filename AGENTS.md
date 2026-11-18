@@ -60,6 +60,15 @@ without interrupting active work, follow these priorities:
 3. **Only when clearly necessary or requested:** Propose governance-rule changes
    for human review and merge; otherwise make no proposal.
 
+When a conversation is actually concluded, record a `session_end` note using
+the latest real user message's internal ID. Do not treat a routine thank-you or
+an internal follow-up as an end, or invent an ID when none is available. Keep
+the ID out of Slack replies. This note is an end claim; it does not itself
+complete or schedule the retrospective, so continue the mandatory wrap-up below.
+If the ID or recording is unavailable or unconfirmed, report the handoff as
+pending without exposing internal identifiers.
+See [session handoff](docs/session-handoff.md).
+
 The decision-note tool may also record an explanation whenever useful. Follow
 the [session handoff](docs/session-handoff.md) for note and publication
 procedures. Report pending work rather than claiming it completed.
