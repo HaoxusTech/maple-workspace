@@ -64,10 +64,12 @@ The decision-note tool may also record an explanation whenever useful. Follow
 the [session handoff](docs/session-handoff.md) for note and publication
 procedures. Report pending work rather than claiming it completed.
 
-`MAPLE_HISTORY_SOCKET` identifies the worker audit-history relay. When it is
-configured, use `maple-audit-history query --category tool` (or other categories)
-and `maple-audit-history read --sequence N` to inspect authorized records.
-If it is unset, history is unavailable. Never use `MAPLE_NOTE_SOCKET` for
+`MAPLE_HISTORY_SOCKET` identifies the worker audit-history relay. The current
+local Slack deployment keeps this relay disabled until session binding is
+qualified. When a qualified relay is enabled and the socket is configured, use
+`maple-audit-history query --category tool` (or other categories) and
+`maple-audit-history read --sequence N` to inspect authorized records. If the
+socket is unset, history is unavailable. Never use `MAPLE_NOTE_SOCKET` for
 history; report denied or unavailable history honestly.
 
 Maple's skill design provides arrays of shareable and private skill repositories
