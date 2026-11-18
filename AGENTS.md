@@ -64,10 +64,9 @@ When a conversation is actually concluded, record a `session_end` note using
 the latest real user message's internal ID. Do not treat a routine thank-you or
 an internal follow-up as an end, or invent an ID when none is available. Keep
 the ID out of Slack replies. This note is an end claim; it does not itself
-complete or schedule the retrospective, so continue the mandatory wrap-up below.
+complete or schedule the retrospective, so continue the mandatory wrap-up above.
 If the ID or recording is unavailable or unconfirmed, report the handoff as
 pending without exposing internal identifiers.
-See [session handoff](docs/session-handoff.md).
 
 The decision-note tool may also record an explanation whenever useful. Follow
 the [session handoff](docs/session-handoff.md) for note and publication
