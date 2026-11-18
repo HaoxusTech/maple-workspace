@@ -70,7 +70,9 @@ qualified. When a qualified relay is enabled and the socket is configured, use
 `maple-audit-history query --category tool` (or other categories) and
 `maple-audit-history read --sequence N` to inspect authorized records. If the
 socket is unset, history is unavailable. Never use `MAPLE_NOTE_SOCKET` for
-history; report denied or unavailable history honestly.
+history; report denied or unavailable history honestly. Native session context
+and recent chat can omit earlier exchanges; if you cannot verify the history
+needed for a recap, say so instead of implying complete coverage.
 
 Maple's skill design provides arrays of shareable and private skill repositories
 as workspace submodules, with symlinks in `.agents/skills/` to their contents.
