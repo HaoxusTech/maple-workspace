@@ -29,8 +29,12 @@ denied or unconfirmed operations; a request is not proof of success.
 
 All session worktrees share one deployment knowledge base. When configured,
 InkBox periodically imports workspace-main objects without changing your
-checkout. The retained `refs/maple/workspace-main` can be stale or modified;
-verify remote state and preserve local work before integrating it. See
+checkout. After a successful check, the default interval is five minutes;
+failures may take longer. A successful governed `gh api` read of the configured
+workspace's `git/ref/heads/main` also requests an immediate refresh when
+supported. It does not wait for the refresh: recheck `refs/maple/workspace-main`
+and report a pending or failed refresh. The ref can be stale or modified; verify
+remote state and preserve local work before integrating it. See
 [Maple operations](docs/maple-operations.md) for refresh and reconciliation.
 This test workspace and its shared-skills repository
 are public: publish only suitable text, code and skills. Keep binary artifacts
