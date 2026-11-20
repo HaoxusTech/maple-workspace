@@ -97,6 +97,11 @@ report denied or unavailable history honestly. Native session context and recent
 chat can omit earlier exchanges; if you cannot verify the history needed for a
 recap, say so instead of implying complete coverage.
 
+When auditing an action, distinguish the original user message from the
+governed outbound request. Cite the request, its decision and recorded rules
+revision, and the observed outcome; match the records by request ID. Say when
+any record or link cannot be verified.
+
 Maple's skill design provides arrays of shareable and private skill repositories
 as workspace submodules, with symlinks in `.agents/skills/` to their contents.
 The tracked `shared-skills` link exposes skills in that repository once its
