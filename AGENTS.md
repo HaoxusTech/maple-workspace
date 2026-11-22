@@ -1,7 +1,7 @@
 # Maple deployment workspace
 
 The first MVP is a working Slack-to-Codex agent with persistent per-user sessions
-and web/GitHub access through InkBox. An embedded terminal, reaction polish and
+and web access through InkBox; GitHub access is optional. An embedded terminal, reaction polish and
 live-progress polish are enhancements, not MVP gates. An unsent terminal draft
 may be lost on restart or disconnect; do not interrupt active work.
 
@@ -71,8 +71,9 @@ without interrupting active work, follow these priorities:
 2. **Strongly encouraged:** Preserve useful reusable deployment workspace
    knowledge and separately review reusable learned skills for suitability in
    `maple-shared-skills`. Propose safe, useful additions or improvements only
-   through PRs for human review and merge, within existing governance and privacy
-   boundaries. Make no skill proposal when nothing safe and useful is appropriate.
+   through a protected proposal or, when configured, a PR for human review and
+   merge, within existing governance and privacy boundaries. Make no skill
+   proposal when nothing safe and useful is appropriate.
 3. **Only when clearly necessary or requested:** Propose governance-rule changes
    for human review and merge; otherwise make no proposal.
 
@@ -114,10 +115,11 @@ route; additional repository routes are not yet available. See
 or uninitialized sources and name collisions instead of assuming they are usable.
 Pinned extensions remain separate.
 
-You may propose changes to any skill repository only through a PR. Each proposal
+You may propose changes to any skill repository only through a protected local
+proposal or a configured PR. Each proposal
 must be reviewed by CheckBox against the governance requirements. Public skill
 proposals must not disclose sensitive or nonpublic data, including in filenames,
-commit messages or PR text. Shared-skills PRs require human review and merge.
+commit messages or proposal text. Shared-skills changes require human review and merge.
 The stage-one allow-all reviewer does not enforce these requirements; report that
 limitation and do not treat it as an approval under the intended policy.
 

@@ -57,7 +57,8 @@ workspace submodules, with symlinks from `.agents/skills/` to their contents.
 This deployment currently configures one public shared-skills route; additional
 repository routes are not yet implemented.
 
-From the workspace root, initialize the committed gitlink through InkBox:
+When the GitHub submodule routes are configured, initialize the committed
+gitlink through InkBox from the workspace root:
 
 ```sh
 maple-submodule rules governance-requirements
@@ -88,7 +89,8 @@ For each other configured skill repository, add one relative symlink under
 existing files or links, silently resolve duplicate skill names, or publish
 private repository details in this public workspace. Record links intended for
 future sessions in the workspace repository; changes to skill content still
-require a reviewed PR to its own repository. The configured InkBox routes
+require a human-reviewed protected proposal or configured PR to its own
+repository. The configured InkBox routes
 determine which repositories can be initialized and receive proposals.
 
 ## Workspace pull requests
@@ -136,7 +138,7 @@ reconcile the same request. A retry may repeat an external effect. Supported
 `gh pr review` and repository REST operations also use the relay; interactive
 PR commands and native Git network operations are unavailable.
 
-## Workspace issues
+## GitHub workspace issues (optional)
 
 Create an issue in the configured workspace repository through InkBox:
 
@@ -151,7 +153,7 @@ issue may already exist. Check the retained outcome and the repository before
 retrying. Preserve the printed request ID and original input; a retry can repeat
 an external effect when its outcome is unconfirmed.
 
-## Protected proposals
+## GitHub protected proposals (optional)
 
 From the workspace root, select a changed path relative to the submodule:
 
