@@ -5,6 +5,51 @@ is configured. External effects are governed and audited, except public web
 reads, which are audited without a CheckBox decision. Do not supply credentials
 to the Sandbox or bypass the relay.
 
+## Local Git repositories
+
+When `MAPLE_LOCAL_GIT_SOCKET` is configured, `maple-local-git` uses the
+deployment's local repository names and permissions. GitHub is not required.
+Fetch the authorized current main into a new bundle file and use the returned
+`snapshot.revision` as the base:
+
+```sh
+maple-local-git --repository maple-workspace --fetch --output /tmp/workspace-main.bundle
+```
+
+For workspace publication, select appropriate text, create a local commit based
+on that confirmed revision, and create a unique `refs/heads/proposals/...`
+branch and Git bundle. Submit the bundle and retain the confirmed revision for
+later sessions without moving your checkout:
+
+```sh
+git bundle create /tmp/workspace-change.bundle refs/heads/proposals/NAME ^BASE
+maple-local-git --repository maple-workspace --base BASE --ref refs/heads/proposals/NAME \
+  --bundle /tmp/workspace-change.bundle --publish --retain-worktree "$PWD"
+```
+
+Only a repository configured as a workspace with an explicit publication grant
+can use `--publish`. CheckBox reviews the selected material. If publication is
+confirmed but retention is pending, report both outcomes and reconcile the
+audit and refs before retrying. Keep binary artifacts on the PVC.
+
+For a governance or skills change, use its configured repository name, fetch
+its main, and submit a proposal bundle without `--publish`. The returned
+candidate identifies the proposed commit. Request the complete review question:
+
+```sh
+maple-local-git --repository REPOSITORY --base BASE --ref refs/heads/proposals/NAME \
+  --bundle /tmp/proposal.bundle
+maple-local-git --repository REPOSITORY --review-prompt --base BASE \
+  --ref refs/heads/proposals/NAME --candidate CANDIDATE
+```
+
+Send the returned `question` unchanged through the native question tool; do not
+answer it yourself. An authorized human must review the complete change and
+approve or reject it. The current Slack review supports a small single-commit
+change and the same Slack principal; report larger changes or other reviewers as
+pending rather than claiming a merge. A development allow-all CheckBox decision
+does not establish requirements-aware or sensitive-data review.
+
 ## Public submodules
 
 The target design supports multiple shareable and private skill repositories as

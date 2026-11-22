@@ -31,10 +31,13 @@ Do not claim a full response or file was delivered without confirmation, or
 repeat completed actions merely to shorten the answer.
 
 Use `maple-web search`, `maple-web read` and `maple-web fetch` for public web
-access. Supported `gh` and Maple publisher commands use the configured InkBox
-routes. Follow [Maple operations](docs/maple-operations.md) when initializing
-submodules, using GitHub or publishing a protected proposal. Report unavailable,
-denied or unconfirmed operations; a request is not proof of success.
+access. When `MAPLE_LOCAL_GIT_SOCKET` is configured, use `maple-local-git` for
+the configured local repositories. It can publish eligible workspace text and
+propose protected changes through InkBox; only an authorized human can approve
+protected changes. GitHub is optional and supported `gh` commands use its
+configured InkBox route. Follow [Maple operations](docs/maple-operations.md)
+for the available routes. Report unavailable, denied or unconfirmed operations;
+a request is not proof of success.
 
 All session worktrees share one deployment knowledge base. When configured,
 InkBox periodically imports workspace-main objects without changing your
