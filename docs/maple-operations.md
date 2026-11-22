@@ -5,6 +5,51 @@ is configured. External effects are governed and audited, except public web
 reads, which are audited without a CheckBox decision. Do not supply credentials
 to the Sandbox or bypass the relay.
 
+## Local Git repositories
+
+When `MAPLE_LOCAL_GIT_SOCKET` is configured, `maple-local-git` uses the
+deployment's local repository names and permissions. GitHub is not required.
+Fetch the authorized current main into a new bundle file and use the returned
+`snapshot.revision` as the base:
+
+```sh
+maple-local-git --repository maple-workspace --fetch --output /tmp/workspace-main.bundle
+```
+
+For workspace publication, select appropriate text, create a local commit based
+on that confirmed revision, and create a unique `refs/heads/proposals/...`
+branch and Git bundle. Submit the bundle and retain the confirmed revision for
+later sessions without moving your checkout:
+
+```sh
+git bundle create /tmp/workspace-change.bundle refs/heads/proposals/NAME ^BASE
+maple-local-git --repository maple-workspace --base BASE --ref refs/heads/proposals/NAME \
+  --bundle /tmp/workspace-change.bundle --publish --retain-worktree "$PWD"
+```
+
+Only a repository configured as a workspace with an explicit publication grant
+can use `--publish`. CheckBox reviews the selected material. If publication is
+confirmed but retention is pending, report both outcomes and reconcile the
+audit and refs before retrying. Keep binary artifacts on the PVC.
+
+For a governance or skills change, use its configured repository name, fetch
+its main, and submit a proposal bundle without `--publish`. The returned
+candidate identifies the proposed commit. Request the complete review question:
+
+```sh
+maple-local-git --repository REPOSITORY --base BASE --ref refs/heads/proposals/NAME \
+  --bundle /tmp/proposal.bundle
+maple-local-git --repository REPOSITORY --review-prompt --base BASE \
+  --ref refs/heads/proposals/NAME --candidate CANDIDATE
+```
+
+Send the returned `question` unchanged through the native question tool; do not
+answer it yourself. An authorized human must review the complete change and
+approve or reject it. The current Slack review supports a small single-commit
+change and the same Slack principal; report larger changes or other reviewers as
+pending rather than claiming a merge. A development allow-all CheckBox decision
+does not establish requirements-aware or sensitive-data review.
+
 ## Public submodules
 
 The target design supports multiple shareable and private skill repositories as
@@ -12,7 +57,8 @@ workspace submodules, with symlinks from `.agents/skills/` to their contents.
 This deployment currently configures one public shared-skills route; additional
 repository routes are not yet implemented.
 
-From the workspace root, initialize the committed gitlink through InkBox:
+When the GitHub submodule routes are configured, initialize the committed
+gitlink through InkBox from the workspace root:
 
 ```sh
 maple-submodule rules governance-requirements
@@ -43,7 +89,8 @@ For each other configured skill repository, add one relative symlink under
 existing files or links, silently resolve duplicate skill names, or publish
 private repository details in this public workspace. Record links intended for
 future sessions in the workspace repository; changes to skill content still
-require a reviewed PR to its own repository. The configured InkBox routes
+require a human-reviewed protected proposal or configured PR to its own
+repository. The configured InkBox routes
 determine which repositories can be initialized and receive proposals.
 
 ## Workspace pull requests
@@ -91,7 +138,7 @@ reconcile the same request. A retry may repeat an external effect. Supported
 `gh pr review` and repository REST operations also use the relay; interactive
 PR commands and native Git network operations are unavailable.
 
-## Workspace issues
+## GitHub workspace issues (optional)
 
 Create an issue in the configured workspace repository through InkBox:
 
@@ -106,7 +153,7 @@ issue may already exist. Check the retained outcome and the repository before
 retrying. Preserve the printed request ID and original input; a retry can repeat
 an external effect when its outcome is unconfirmed.
 
-## Protected proposals
+## GitHub protected proposals (optional)
 
 From the workspace root, select a changed path relative to the submodule:
 

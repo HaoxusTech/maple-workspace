@@ -43,9 +43,9 @@ unconfirmed recording as pending.
 Strongly encourage both preserving useful deployment-specific knowledge in
 workspace `main` and a separate review of reusable learned skills for suitability
 in `maple-shared-skills`. Propose safe, useful skill additions or improvements
-only through PRs for human review and merge, following the existing CheckBox,
-governance and privacy requirements. Make no skill proposal when nothing safe
-and useful is appropriate.
+only through a protected local proposal or a configured PR for human review
+and merge, following the existing CheckBox, governance and privacy requirements.
+Make no skill proposal when nothing safe and useful is appropriate.
 Keep nonpublic memories and binary artifacts on the PVC, and never publish
 credentials or raw audit history. Honor the configured learning mode and do
 not silently modify pinned extensions.
@@ -54,11 +54,14 @@ Place binary artifacts that need to persist in the worktree's Git-ignored
 temporary outputs. Verify selected publication content even when a path is
 ignored by Git.
 
-For workspace publication, first check `maple-workspace-publish --help`: its
+For workspace publication, when `MAPLE_LOCAL_GIT_SOCKET` is configured, follow
+the local Git procedure in [Maple operations](maple-operations.md), including
+`--retain-worktree`. If the GitHub publisher is configured instead, first check
+`maple-workspace-publish --help`: its
 `--main-worktree` description must say that no checkout is modified. Older
 publishers may require a separate clean `main` worktree; leave publication
 pending if the safe version is unavailable. When configured, select changed
-files or directories from the session worktree:
+files or directories from the session worktree with that GitHub route:
 
 ```sh
 maple-workspace-publish --socket /relay/github.sock --owner HaoxusTech \
